@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const productController = require('./controllers/product.controller.js');
+const adminController = require('./controllers/admin.controller.js');
+
 
 dotenv.config();
 const app = express();
@@ -45,6 +47,8 @@ mongoose
 
 
 app.use('/products', productController);
+app.use('/admin', adminController);
+
 app.use(express.static("image"));
 
 app.listen(PORT, () => {

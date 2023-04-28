@@ -3,10 +3,11 @@ const Schema = mongoose.Schema;
 
 let products  = new Schema({
   SKU: {type: String},
-  Quantity: {type: String},
+  Images: {type: String },
   ProductName: {type: String},
+  Price: {type: String},
   Description: {type: String},
-  images: {type: String },
+  Quantity: {type: String},
   cloudinary_id: {type: String}
 },
   {

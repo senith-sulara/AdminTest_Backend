@@ -1,5 +1,5 @@
 const cloudinary = require("cloudinary").v2;
-
+//cloudinary configuration for image upload
 cloudinary.config({
   cloud_name: "dz3ljnlvy",
   api_key: "489386556464742",

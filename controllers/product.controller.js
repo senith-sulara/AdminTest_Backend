@@ -7,7 +7,7 @@ const Router = express.Router();
 const cloudinary = require("../utils/cloudinary.js");
 const upload = require("../utils/multer.js");
 
-//Insert
+//Insert products
 
 Router.post(
   "/insert",
@@ -55,7 +55,7 @@ Router.get("/getAllProducts", async (req, res) => {
   }
 });
 
-
+//get product by product name
 Router.get("/searchProduct/:ProductName", async (req, res) => {
   try {
     let key = req.params.ProductName;
@@ -81,26 +81,28 @@ Router.get("/searchProduct/:ProductName", async (req, res) => {
 });
 
 
-Router.get("/getSearch/:ProductName", async (req, res) => {
-  try {
-    var regex = new RegExp(req.params.ProductName, "i"),
-      query = { description: regex };
-    const products = await Product.find(query, function (err, product) {
-      if (err) {
-        res.json(err);
-      }
+// Router.get("/getSearch/:ProductName", async (req, res) => {
+//   try {
+//     var regex = new RegExp(req.params.ProductName, "i"),
+//       query = { description: regex };
+//     const products = await Product.find(query, function (err, product) {
+//       if (err) {
+//         res.json(err);
+//       }
 
-      res.json(product);
-    });
-    const sortedByCreationDate = products.sort(
-      (a, b) => b.createdAt - a.createdAt
-    );
-    res.send(sortedByCreationDate);
-  } catch (error) {
-    res.status(400).send("Error while getting list of Product. Try again later.");
-  }
-});
+//       res.json(product);
+//     });
+//     const sortedByCreationDate = products.sort(
+//       (a, b) => b.createdAt - a.createdAt
+//     );
+//     res.send(sortedByCreationDate);
+//   } catch (error) {
+//     res.status(400).send("Error while getting list of Product. Try again later.");
+//   }
+// });
 
+
+//get product by id
 Router.get("/getProduct/:id",async(req,res)=>{
   try {
       const prodcut = await Product.findById(req.params.id);

@@ -15,27 +15,6 @@ app.use(express.json());
 const PORT = process.env.PORT || 8070;
 const MONGODB_URI = process.env.MONGODB_URI;
 
-// mongoose.connect(
-//   MONGODB_URI,
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   },
-//   (error) => {
-//     if (error) {
-//       console.log("DataBase ERROR: ", error.message);
-//     }
-//   }
-// );
-
-// mongoose.connection.once("open", () => {
-//   console.log("Database Synced");
-// });
-
-
-
-// const mongoURI = "mongodb://localhost:27017/";
-
 mongoose
   .connect(MONGODB_URI)
   .then(() => {
@@ -45,7 +24,7 @@ mongoose
     console.log(err);
   });
 
-
+//routes
 app.use('/products', productController);
 app.use('/admin', adminController);
 

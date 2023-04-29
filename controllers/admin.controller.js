@@ -11,6 +11,7 @@ const config = require('../utils/config.js')
  * @returns {Promise<any>}
  */
 
+
 Router.post("/signin", async (req, res) => {
   const { email, password } = req.body;
 
@@ -45,7 +46,7 @@ Router.post("/signin", async (req, res) => {
   }
 });
 
-
+//get admin details
 Router.get("/getAdmin/:id", async (req, res) => {
   try {
     let id = req.params.id;

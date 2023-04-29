@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+//Favorite model
 const CartSchema = new Schema({
     items: [{
         productId: {

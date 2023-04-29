@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//Product model
 let products  = new Schema({
   SKU: {type: String},
   Images: {type: String },

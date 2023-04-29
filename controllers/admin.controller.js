@@ -3,14 +3,13 @@ const express = require("express");
 const Admin = require("../models/admin.model");
 const jwt = require("jsonwebtoken");
 const Router = express.Router();
-const config = require('../utils/config.js')
+const config = require("../utils/config.js");
 /**
  * sign in controller
  * @param req
  * @param res
  * @returns {Promise<any>}
  */
-
 
 Router.post("/signin", async (req, res) => {
   const { email, password } = req.body;

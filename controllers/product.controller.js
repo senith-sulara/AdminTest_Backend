@@ -51,7 +51,9 @@ Router.get("/getAllProducts", async (req, res) => {
     );
     res.send(sortedByCreationDate);
   } catch (error) {
-    res.status(400).send("Error while getting list of Product. Try again later.");
+    res
+      .status(400)
+      .send("Error while getting list of Product. Try again later.");
   }
 });
 
@@ -80,7 +82,6 @@ Router.get("/searchProduct/:ProductName", async (req, res) => {
   }
 });
 
-
 // Router.get("/getSearch/:ProductName", async (req, res) => {
 //   try {
 //     var regex = new RegExp(req.params.ProductName, "i"),
@@ -101,18 +102,16 @@ Router.get("/searchProduct/:ProductName", async (req, res) => {
 //   }
 // });
 
-
 //get product by id
-Router.get("/getProduct/:id",async(req,res)=>{
+Router.get("/getProduct/:id", async (req, res) => {
   try {
-      const prodcut = await Product.findById(req.params.id);
-      console.log(prodcut);
-      res.status(200).json(prodcut)
-
+    const prodcut = await Product.findById(req.params.id);
+    console.log(prodcut);
+    res.status(200).json(prodcut);
   } catch (error) {
-      res.status(400).json(error);
+    res.status(400).json(error);
   }
-})
+});
 
 ////////////////////////////////////
 
@@ -136,7 +135,9 @@ Router.put("/:id", upload.single("image"), async (req, res) => {
       Quantity: req.body.Quantity || product.Quantity,
       cloudinary_id: result?.public_id || product.cloudinary_id,
     };
-    product = await Product.findByIdAndUpdate(req.params.id, data, { new: true });
+    product = await Product.findByIdAndUpdate(req.params.id, data, {
+      new: true,
+    });
     res.json(product);
   } catch (e) {
     res.status(400).json({ msg: e.message, success: false });
